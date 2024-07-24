@@ -1,9 +1,9 @@
 // 0x00-ES6_basic/12-createReportObject.js
-export default function createReportObject (employeesList) {
+export default function createReportObject(employeesList) {
   return {
     allEmployees: { ...employeesList },
-    getNumberOfDepartments () {
+    getNumberOfDepartments() {
       return Object.keys(this.allEmployees).length;
-    }
+    },
   };
 }

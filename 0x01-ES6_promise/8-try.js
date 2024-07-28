@@ -1,7 +1,7 @@
 const divideFunction = (numerator, denominator) => {
   try {
     if (denominator === 0) {
-      throw Error('cannot divide by zero');
+      throw new Error('cannot divide by zero');
     }
 
     return numerator / denominator;

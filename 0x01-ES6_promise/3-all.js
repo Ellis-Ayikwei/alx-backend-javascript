@@ -1,9 +1,9 @@
 // 3-all.js
 import { createUser, uploadPhoto } from "./utils";
 
-async function handleProfileSignup() {
+function handleProfileSignup() {
   try {
-    const [photoResponse, userResponse] = await Promise.all([
+    const [photoResponse, userResponse] =  Promise.all([
       uploadPhoto(),
       createUser()
     ]);

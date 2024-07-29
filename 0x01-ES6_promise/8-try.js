@@ -1,13 +1,9 @@
-const divideFunction = (numerator, denominator) => {
-  try {
-    if (denominator === 0) {
-      throw new Error('cannot divide by zero');
+const divideFunction = (dividend, divisor) => {
+    if (divisor === 0) {
+      throw new Error('Cannot divide by zero');
     }
 
-    return numerator / denominator;
-  } catch (error) {
-    return (error);
+    return dividend / divisor;
   }
-};
 
 export default divideFunction;

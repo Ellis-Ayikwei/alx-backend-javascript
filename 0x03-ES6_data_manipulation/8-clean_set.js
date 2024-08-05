@@ -1,8 +1,6 @@
 const cleanSet = (inputSet, startString) => {
   if (
-    typeof startString !== 'string'
-		|| startString.length === 0
-		|| !(inputSet instanceof Set)
+    typeof startString !== 'string' || startString.length === 0 || !(inputSet instanceof Set)
   ) {
     return '';
   }

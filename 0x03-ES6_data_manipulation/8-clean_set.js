@@ -1,16 +1,11 @@
 const cleanSet = (set, startString) => {
-	if (typeof startString !== "string" || startString.length === 0) {
+    if (typeof startString !== "string" || startString.length === 0) {
 		return "";
 	}
+  const filteredItems = Array.from(set).filter(item => item.startsWith(startString))
+    .map(item => item.slice(startString.length));
 
-	const filteredSet = [];
-	set.forEach((item) => {
-		if (item.startsWith(startString)) {
-			filteredSet.push(item.slice(startString.length));
-		}
-	});
-
-	return filteredSet.join("-");
+  return filteredItems.join("-");
 };
 
 export default cleanSet;

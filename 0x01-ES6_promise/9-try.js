@@ -7,7 +7,7 @@ try {
 } catch (error) {
     queue.push(`Error: ${error.message}`);
 }
-  return [...queue, 'Guardrail processed'];
+  return [...queue, 'Guardrail was processed'];
 }
 
 

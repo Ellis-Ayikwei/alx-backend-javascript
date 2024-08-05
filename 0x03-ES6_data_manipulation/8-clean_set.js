@@ -1,11 +1,11 @@
-const cleanSet = (inputSet, prefix) => {
-  if (typeof prefix !== 'string' || prefix.length === 0 || !(inputSet instanceof Set)) {
+const cleanSet = (inputSet, startString) => {
+  if (typeof startString !== 'string' || startString.length === 0 || !(inputSet instanceof Set)) {
     return '';
   }
 
   const filteredItems = Array.from(inputSet)
-    .filter(item => item.startsWith(prefix))
-    .map(item => item.slice(prefix.length));
+    .filter(item => item.startsWith(startString))
+    .map(item => item.slice(startString.length));
 
   return filteredItems.join('-');
 };

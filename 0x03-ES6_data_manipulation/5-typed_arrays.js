@@ -1,13 +1,12 @@
-const createInt8TypedArray = (bufferLength, position, value) => {
-  const buffer = new ArrayBuffer(bufferLength);
-  const dataView = new DataView(buffer);
-
-  if (position < 0 || position >= bufferLength) {
-    return 'Position outside range';
+const createInt8TypedArray = (length, index, number) => {
+  try {
+    const buffer = new ArrayBuffer(length);
+    const view = new DataView(buffer);
+    view.setInt8(index, number);
+    return view;
+  } catch {
+    return "Position outside range";
   }
-
-  dataView.setInt8(position, value);
-  return dataView;
 };
 
 export default createInt8TypedArray;

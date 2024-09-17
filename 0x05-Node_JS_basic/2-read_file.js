@@ -7,8 +7,8 @@ const fs = require("fs");
  */
 function countStudents(filename) {
 	try {
-		const data = fs.readFileSync(filename, { encoding: "utf8" });
-		const rows = data.split("\n").slice(1);
+		const data = fs.readFileSync(filename, 'utf8');
+		const rows = data.split("\n").slice(1).filter(line => line.trim() !== "");
 
 		const studentsByField = rows.reduce((acc, row) => {
 			const field = row.split(",")[3];

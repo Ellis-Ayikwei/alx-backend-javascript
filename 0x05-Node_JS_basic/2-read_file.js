@@ -2,34 +2,31 @@ const fs = require("fs");
 
 /**
  * Count students in a given file
- * @param {string} filePath Path to the CSV file
+ * @param {string} filename Path to the CSV file
  * @throws {Error} If the file cannot be loaded
  */
-function countStudents(filePath) {
+function countStudents(filename) {
 	try {
-		const fileData = fs.readFileSync(filePath, { encoding: "utf8" });
+		const data = fs.readFileSync(filename, { encoding: "utf8" });
+		const rows = data.split("\n").slice(1);
 
-		const lines = fileData.split("\n").filter((line) => line.length > 0);
-		const fields = lines[0].split(",");
-		const studentsByField = {};
+		const studentsByField = rows.reduce((acc, row) => {
+			const field = row.split(",")[3];
+			const firstname = row.split(",")[0];
+			console.log("field", field);
+			acc[field] = (acc[field] || []).concat([firstname]);
+			console.log(acc);
+			return acc;
+		}, {});
 
-		for (let i = 1; i < lines.length; i += 1) {
-			const studentdata = lines[i].split(",");
-			const field = studentdata[3];
-			if (!studentsByField[field]) {
-				studentsByField[field] = [];
-			}
-			studentsByField[field].push(studentdata[0]);
-		}
-
-		console.log(`Number of students: ${lines.length - 1}`);
-		for (const field in studentsByField) {
+		console.log(`Number of students: ${rows.length}`);
+		Object.entries(studentsByField).forEach(([field, names]) => {
 			console.log(
-				`Number of students in ${field}: ${
-					studentsByField[field].length
-				}. List: ${studentsByField[field].join(", ")} `
+				`Number of students in ${field}: ${names.length}. List: ${names.join(
+					", "
+				)}`
 			);
-		}
+		});
 	} catch (err) {
 		throw new Error("Cannot load the database");
 	}

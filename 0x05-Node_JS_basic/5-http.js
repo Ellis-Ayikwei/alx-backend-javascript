@@ -1,7 +1,7 @@
 const http = require('http');
+const fs = require('fs').promises;
 
 const filepath = process.argv[2];
-const fs = require('fs').promises;
 
 async function countStudents(filename) {
   try {
@@ -32,7 +32,7 @@ async function countStudents(filename) {
   }
 }
 
-const server = http.createServer(async (req, res) => {
+const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
 
@@ -51,8 +51,9 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(1245, '127.0.0.1', () => {
+app.listen(1245, '127.0.0.1', () => {
   console.log('Server is listening on port 1245');
 });
 
-module.exports = server;
+module.exports = app;
+

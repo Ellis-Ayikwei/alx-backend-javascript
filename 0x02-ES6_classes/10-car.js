@@ -30,6 +30,10 @@ export default class Car {
 	}
 
 	cloneCar() {
+<<<<<<< HEAD
 		return new this.constructor = [Symbol.species];
+=======
+		return new this.constructor();
+>>>>>>> 1434d8a7b2ac139edfdd30a90403c28d3a689d58
 	}
 }

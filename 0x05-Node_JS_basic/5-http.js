@@ -5,6 +5,9 @@ const filepath = process.argv[2];
 
 async function countStudents(filename) {
 	try {
+		if (!filename) {
+			throw new Error("Cannot load the database");
+		}
 		const data = await fs.readFile(filename, "utf8");
 		const rows = data
 			.split("\n")

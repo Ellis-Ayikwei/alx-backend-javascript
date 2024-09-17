@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = require('fs').promises;
+const fs = require('fs');
 
 const filepath = process.argv[2];
 

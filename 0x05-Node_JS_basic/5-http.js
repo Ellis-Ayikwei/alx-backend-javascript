@@ -1,7 +1,7 @@
 const http = require('http');
 
 const filepath = process.argv[2];
-const fs = require('fs');
+const fs = require('fs').promises;
 
 async function countStudents(filename) {
   try {
@@ -38,15 +38,17 @@ const server = http.createServer(async (req, res) => {
 
   if (req.url === '/') {
     res.end('Hello Holberton School!');
-  }
-  if (req.url === '/students') {
+  } else if (req.url === '/students') {
     try {
       const studentList = await countStudents(filepath);
       res.end(`This is the list of our students\n${studentList}`);
     } catch (error) {
       res.end(`Error: ${error.message}`);
     }
-  } 
+  } else {
+    res.statusCode = 404;
+    res.end('Not Found');
+  }
 });
 
 server.listen(1245, '127.0.0.1', () => {

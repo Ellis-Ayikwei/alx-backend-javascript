@@ -13,9 +13,7 @@ function countStudents(filename) {
 		const studentsByField = rows.reduce((acc, row) => {
 			const field = row.split(",")[3];
 			const firstname = row.split(",")[0];
-			console.log("field", field);
 			acc[field] = (acc[field] || []).concat([firstname]);
-			console.log(acc);
 			return acc;
 		}, {});
 
@@ -28,7 +26,7 @@ function countStudents(filename) {
 			);
 		});
 	} catch (err) {
-		throw new Error("Cannot load the database");
+		throw new Error('Cannot load the database');
 	}
 }
 

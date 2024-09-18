@@ -32,7 +32,7 @@ async function countStudents(filename) {
 
 		return result;
 	} catch (err) {
-		throw new Error(`Cannot load the database ${filename}`);
+		throw new Error(`Cannot load the database`);
 	}
 }
 

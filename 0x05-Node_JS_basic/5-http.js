@@ -1,7 +1,7 @@
 const http = require("http");
 const fs = require("fs").promises;
 
-const filepath = process.argv[2];
+const filepath = process.argv.length > 2 ? process.argv[2] : '';
 
 async function countStudents(filename) {
 	try {

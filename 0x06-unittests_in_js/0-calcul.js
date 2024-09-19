@@ -1,4 +1,8 @@
-// 0-calcul.js
-export default function calculateNumber(a, b) {
-  return Math.round(a) + Math.round(b);
-}
+const calculateNumber = (a, b) => {
+	const aRound = Math.round(a);
+	const bRound = Math.round(b);
+  
+	return aRound + bRound;
+  };
+  
+  module.exports = calculateNumber;

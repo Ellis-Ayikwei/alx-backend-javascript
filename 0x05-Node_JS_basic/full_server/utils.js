@@ -6,7 +6,7 @@ const readDatabase = (filepath) => new Promise((resolve, reject) => {
   }
   fs.readFile(filepath, 'utf8', (err, data) => {
     if (err) {
-      reject(new Error('Cannot load the database'));
+      return reject(new Error('Cannot load the database'));
     }
     if (data) {
       const fileLines = data.toString('utf-8').trim().split('\n');

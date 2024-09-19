@@ -5,7 +5,6 @@ const readDatabase = (filepath) => new Promise((resolve, reject) => {
     reject(new Error('Cannot load the database'));
     return;
   }
-
   fs.readFile(filepath, 'utf8', (err, data) => {
     if (err) {
       reject(new Error('Cannot load the database'));
@@ -21,7 +20,6 @@ const readDatabase = (filepath) => new Promise((resolve, reject) => {
       }
       fields[field].push(firstName);
     }
-
     resolve(fields);
   });
 });

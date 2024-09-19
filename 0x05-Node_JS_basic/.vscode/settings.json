@@ -1,3 +1,7 @@
 {
-	"codeium.enableInComments": false
+	"codeium.enableInComments": false,
+	"github.copilot.editor.enableAutoCompletions": false,
+	"editor.acceptSuggestionOnCommitCharacter": false,
+	"codeium.disableSupercomplete": true,
+	"editor.inlineSuggest.enabled": false
 }

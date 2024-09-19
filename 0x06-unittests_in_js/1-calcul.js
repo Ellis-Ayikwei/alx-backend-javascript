@@ -17,9 +17,6 @@ const calculateNumber = (type, a, b) => {
 				result = roundedNum1 / roundedNum2;
 				break;
 			}
-		case "MULTIPLY":
-			result = roundedNum1 * roundedNum2;
-			break;
 	}
 	return result;
 };

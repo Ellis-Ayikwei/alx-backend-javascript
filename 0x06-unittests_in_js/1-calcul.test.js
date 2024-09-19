@@ -8,12 +8,6 @@ describe("calculateNumber", function () {
 		});
 	});
 
-	describe("if the Type is MULTIPLY", () => {
-		it("should return the 15 if a is 5 b is 3", () => {
-			assert.strictEqual(calculateNumber("MULTIPLY", 5, 3), 15);
-		});
-	});
-
 	describe("if the Type is DIVIDE", () => {
 		it("should return the 5 if a is 15 b is 3", () => {
 			assert.strictEqual(calculateNumber("DIVIDE", 15, 3), 5);

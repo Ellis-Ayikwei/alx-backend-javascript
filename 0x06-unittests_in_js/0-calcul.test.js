@@ -532,4 +532,8 @@ describe("calculateNumber", () => {
 		const result = calculateNumber(1.5, 3.7);
 		assert.strictEqual(result, 6);
 	});
+
+	after(() => {
+		console.log("tests done");
+	});
 });

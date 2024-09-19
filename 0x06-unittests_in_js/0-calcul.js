@@ -1,7 +1,4 @@
-module.exports = {
-	addNumbers: (firstNumber, secondNumber) => {
-		const sum = Math.round(firstNumber) + Math.round(secondNumber);
-		return sum;
-	}
-};
-
+// 0-calcul.js
+export function calculateNumber(a, b) {
+	return Math.round(a) + Math.round(b);
+}

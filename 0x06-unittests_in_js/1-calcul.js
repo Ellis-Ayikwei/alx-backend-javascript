@@ -11,12 +11,11 @@ const calculateNumber = (type, a, b) => {
 			result = roundedNum1 - roundedNum2;
 			break;
 		case "DIVIDE":
-			if (roundedNum1 === 0) {
+			if (roundedNum2 === 0) {
 				return "Error";
-			} else {
-				result = roundedNum1 / roundedNum2;
-				break;
 			}
+			result = roundedNum1 / roundedNum2;
+			break;
 	}
 	return result;
 };

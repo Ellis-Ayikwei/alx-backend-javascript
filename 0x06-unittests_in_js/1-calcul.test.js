@@ -76,7 +76,7 @@ describe('calculateNumber', function () {
 
   describe('DIVIDE Error', function () {
     it('should return Error', function () {
-      assert.equal(calculateNumber('DIVIDE', 1.4, 0), 'Error');
+      assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
     });
   });
 });

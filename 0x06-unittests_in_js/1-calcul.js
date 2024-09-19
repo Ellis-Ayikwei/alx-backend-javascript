@@ -20,8 +20,6 @@ const calculateNumber = (type, a, b) => {
 		case "MULTIPLY":
 			result = roundedNum1 * roundedNum2;
 			break;
-		default:
-			throw new Error(`Unsupported type: ${type}`);
 	}
 	return result;
 };

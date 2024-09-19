@@ -1,6 +1,6 @@
-import { assert } from "chai";
-import { describe } from "mocha";
-import { addNumbers } from "./0-calcul.js";
+const assert = require("chai").assert;
+const describe = require("mocha").describe;
+const { addNumbers } = require("./0-calcul");
 
 const calculateNumber = addNumbers;
 

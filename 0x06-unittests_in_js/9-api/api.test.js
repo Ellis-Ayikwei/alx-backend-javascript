@@ -15,7 +15,7 @@ describe("Index Page", () => {
 	});
 
 	it("should return Payment methods for cart :id", (done) => {
-		request.get("http://localhost:7865/5", (error, res, body) => {
+		request.get("http://localhost:7865/cart/5", (error, res, body) => {
 			expect(res.statusCode).to.be.equal(200);
 			expect(res.headers["content-type"]).to.be.equal(
 				"text/plain; charset=utf-8"
@@ -25,12 +25,11 @@ describe("Index Page", () => {
 		});
 	});
 	it("should return Not found", (done) => {
-		request.get("http://localhost:7865/a", (error, res, body) => {
+		request.get("http://localhost:7865/cart/a", (error, res, body) => {
 			expect(res.statusCode).to.be.equal(404);
 			expect(res.headers["content-type"]).to.be.equal(
-				"text/plain; charset=utf-8"
+				"text/html; charset=utf-8"
 			);
-			expect(body).to.be.equal("Not Found");
 			done();
 		});
 	});

@@ -14,6 +14,11 @@ app.get("/cart/:id([0-9]+)", (req, res) => {
 	const id = req.params.id;
 	const regex = new RegExp("^[0-9]+$");
 
+	if (!regex.test(id)) {
+		res.statusCode = 404;
+		res.contentType("text/plain");
+		return res.send("Not Found");
+	}
 	res.statusCode = 200;
 	res.contentType("text/plain");
 	res.send(`Payment methods for cart ${id}`);

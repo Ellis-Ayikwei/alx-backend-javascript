@@ -25,8 +25,23 @@ app.get("/cart/:id([0-9]+)", (req, res) => {
 });
 
 
-app.get('/available_payments', () => {
-	
+app.get('/available_payments', (req, res) => {
+ const data = {
+  payment_methods: {
+    credit_cards: true,
+    paypal: false
+  }
+}
+	res.statusCode = 200;
+	res.contentType("text/plain");
+	res.send(data);
+})
+
+app.post('/ login', (req, res) => {
+ cont username = req.body.username
+	res.statusCode = 200;
+	res.contentType("text/plain");
+	res.send(`Welcome ${username}`);
 })
 
 const server = app.listen(port, localhost, () => {

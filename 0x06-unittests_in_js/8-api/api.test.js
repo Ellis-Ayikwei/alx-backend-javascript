@@ -1,6 +1,4 @@
-const assert = require("assert").strict;
 const request = require("request");
-const app = require("./api");
 
 const expect = require("chai").expect;
 
@@ -11,12 +9,8 @@ describe("Index Page", () => {
 			expect(res.headers["content-type"]).to.be.equal(
 				"text/plain; charset=utf-8"
 			);
-			expect(body).to.be.equal("Welcome to the payment system"); // Access the body here
-			done(); // Call done to complete the test
+			expect(body).to.be.equal("Welcome to the payment system");
+			done();
 		});
-	});
-
-	after(() => {
-		app.close(); // Ensure server is closed after all tests
 	});
 });

@@ -1,9 +1,9 @@
-import { Currency } from './3-currency.js';
+import Currency from './3-currency.js';
 
 export class Pricing {
-  constructor(amount, currency) {
+  constructor(amount, currency) {  // Changed 'new Currency' to 'currency'
     this._amount = amount;
-    this._currency = currency;
+    this._currency = currency instanceof Currency ? currency : new Currency(); // Ensure currency is a Currency instance
   }
 
   get amount() {

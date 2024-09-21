@@ -1,9 +1,10 @@
-import readDatabase from '../utils';
+// full_server/controllers/StudentsController.js
 
+const readDatabase = require('../utils');  // Adjust import if necessary
 const filepath = process.argv[2];
 
 class StudentsController {
-  static getAllStudents(_, res) {
+  static getAllStudents(req, res) {
     const responseParts = ['This is the list of our students'];
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
@@ -13,20 +14,18 @@ class StudentsController {
         const sortedFields = Object.entries(data)
           .sort(([fieldA], [fieldB]) => fieldA.localeCompare(fieldB));
 
-        sortedFields.forEach(([field, Fnames]) => {
+        sortedFields.forEach(([field, firstNames]) => {
           responseParts.push(
-            `Number of students in ${field}: ${
-              Fnames.length
-            }. List: ${Fnames.join(', ')}`,
+            `Number of students in ${field}: ${firstNames.length}. List: ${firstNames.join(', ')}`,
           );
         });
 
         const finalResponse = responseParts.join('\n');
         res.end(finalResponse);
       })
-      .catch(() => {
-        res.statusCode = 500;
-        res.end('Cannot load the database');
+      .catch((error) => {
+        console.error(error);  // Log error for debugging purposes
+        res.status(500).send('Cannot load the database');
       });
   }
 
@@ -34,12 +33,11 @@ class StudentsController {
     const { major } = req.params;
 
     if (major !== 'CS' && major !== 'SWE') {
-      res.statusCode = 500;
-      res.end('Major parameter must be CS or SWE');
+      res.status(500).send('Major parameter must be CS or SWE');
+      return;
     }
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
+    res.status(200).setHeader('Content-Type', 'text/plain');
 
     readDatabase(filepath)
       .then((data) => {
@@ -48,15 +46,14 @@ class StudentsController {
           const finalResponse = `List: ${studentList.join(', ')}`;
           res.end(finalResponse);
         } else {
-          res.statusCode = 500;
-          res.end('Cannot load the database');
+          res.status(500).send('Cannot load the database');
         }
       })
-      .catch(() => {
-        res.statusCode = 500;
-        res.end('Cannot load the database');
+      .catch((error) => {
+        console.error(error);  // Log error for debugging purposes
+        res.status(500).send('Cannot load the database');
       });
   }
 }
 
-export default StudentsController;
+module.exports = StudentsController;

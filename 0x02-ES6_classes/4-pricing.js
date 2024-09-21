@@ -1,17 +1,15 @@
-import Currency from './3-currency';
-
 export default class Pricing {
-  constructor(amount) {
-    this._amount = amount;
-    this._currency = Currency;
+  constructor(price, currency) {
+    this._price = price;
+    this._currency = currency;
   }
 
-  get amount() {
-    return this._amount;
+  get price() {
+    return this._price;
   }
 
-  set amount(value) {
-    this._amount = value;
+  set price(value) {
+    this._price = value;
   }
 
   get currency() {
@@ -22,11 +20,11 @@ export default class Pricing {
     this._currency = value;
   }
 
-  static convertPrice(amount, conversionRate) {
-    return amount * conversionRate;
+  displayFullPrice() {
+    return `${this._price} ${this._currency.displayFullCurrency()}`;
   }
 
-  displayFullPrice() {
-    return `${this._amount} ${this._currency.displayFullCurrency()}`;
+  static convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
   }
 }

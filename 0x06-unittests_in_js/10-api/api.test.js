@@ -34,3 +34,51 @@ describe("Index Page", () => {
 		});
 	});
 });
+
+describe("testing the Login endpoint", () => {
+	it("should return a welcome message for the user", (done) => {
+		const requestBody = {
+			userName: "Ellis",
+		};
+
+		request.post(
+			{
+				url: "http://localhost:7865/login",
+				json: requestBody,
+				ContentType: "application / json",
+			},
+			(error, res, body) => {
+				expect(res.statusCode).to.be.equal(200);
+				expect(res.headers["content-type"]).to.include(
+					"text/plain; charset=utf-8"
+				);
+				expect(body).to.equal(`Welcome ${requestBody.userName}`);
+				done();
+			}
+		);
+	});
+});
+
+describe("testing the available_payments", () => {
+	it("should return the payment methods", (done) => {
+		const requestBody = {
+			userName: "Ellis",
+		};
+
+		request.get(
+			{
+				url: "http://localhost:7865/available_payments",
+			},
+			(error, res, body) => {
+				expect(res.statusCode).to.be.equal(200);
+				expect(res.headers["content-type"]).to.include(
+					"text/plain; charset=utf-8"
+				);
+				expect(body).to.equal(
+					`{"payment_methods":{"credit_cards":true,"paypal":false}}`
+				);
+				done();
+			}
+		);
+	});
+});

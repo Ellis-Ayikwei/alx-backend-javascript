@@ -1,6 +1,6 @@
 import Currency from "./3-currency.js";
 
-class Pricing {
+export default class Pricing {
 	/**
 	 * Creates an instance of Pricing.
 	 * @param {Number} amount

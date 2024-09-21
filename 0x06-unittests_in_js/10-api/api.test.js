@@ -58,13 +58,8 @@ describe("testing the Login endpoint", () => {
 		);
 	});
 });
-
 describe("testing the available_payments", () => {
 	it("should return the payment methods", (done) => {
-		const requestBody = {
-			userName: "Ellis",
-		};
-
 		request.get(
 			{
 				url: "http://localhost:7865/available_payments",
@@ -74,9 +69,16 @@ describe("testing the available_payments", () => {
 				expect(res.headers["content-type"]).to.include(
 					"text/plain; charset=utf-8"
 				);
-				expect(body).to.equal(
-					`{"payment_methods":{"credit_cards":true,"paypal":false}}`
-				);
+
+				// Parse the body to JSON for deep equality comparison
+				const expectedResponse = {
+					payment_methods: {
+						credit_cards: true,
+						paypal: false,
+					},
+				};
+
+				expect(JSON.parse(body)).to.deep.equal(expectedResponse);
 				done();
 			}
 		);

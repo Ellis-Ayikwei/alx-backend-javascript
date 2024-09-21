@@ -1,4 +1,4 @@
-import Currency from "./3-currency";
+import Currency from "./3-currency.js";
 
 export default class Pricing {
 	constructor(price, currency) {  // Changed Currency to currency for consistency

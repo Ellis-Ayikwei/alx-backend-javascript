@@ -33,14 +33,14 @@ app.get("/available_payments", (req, res) => {
 		},
 	};
 	res.statusCode = 200;
-	res.contentType("text/plain");
+	res.contentType("application/json");
 	res.send(data);
 });
 
 app.post("/login", (req, res) => {
 	const username = req.body.userName;
 	res.statusCode = 200;
-	res.contentType("application/json");
+	res.contentType("text/plain");
 	res.send(`Welcome ${username}`);
 });
 

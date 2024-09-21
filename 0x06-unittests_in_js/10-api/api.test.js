@@ -66,9 +66,7 @@ describe("testing the available_payments", () => {
 			},
 			(error, res, body) => {
 				expect(res.statusCode).to.be.equal(200);
-				expect(res.headers["content-type"]).to.include(
-					"text/plain; charset=utf-8"
-				);
+				expect(res.headers["content-type"]).to.include("application/json");
 
 				// Parse the body to JSON for deep equality comparison
 				const expectedResponse = {
